@@ -10,7 +10,28 @@ function mostrar_mapa_tiendas() {
 
     ob_start();
     ?>
-    <div id="mapa-tiendas" style="height: 500px; width: 100%;"></div>
+    <div class="contenedor-principal">
+        <div class="formulario-container">
+            <select id="departamento-selector">
+                <option value="">Seleccione un departamento</option>
+            </select>
+            <select id="provincia-selector">
+                <option value="">Seleccione una provincia</option>
+            </select>
+            <select id="tienda-selector">
+                <option value="">Seleccione una tienda</option>
+            </select>
+            <button id="buscar-tienda">Buscar en el mapa</button>
+            <div class="info-tienda">
+                <h5 id="nombre-tienda"></h5>
+                <p id="direccion-tienda"></p>
+                <p id="horario-tienda"></p>
+            </div>
+        </div>
+        <div class="mapa-container">
+            <div id="mapa-tiendas"></div>
+        </div>
+    </div>
     <?php
     return ob_get_clean();
 }

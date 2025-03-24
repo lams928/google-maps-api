@@ -40,8 +40,9 @@ function mostrar_mapa_tiendas() {
             <button id="buscar-tienda">Buscar en el mapa</button>
             <div class="info-tienda">
                 <h5 id="nombre-tienda"></h5>
-                <p id="direccion-tienda"></p>
-                <p id="horario-tienda"></p>
+                <p><strong>Dirección:</strong> <span id="direccion-tienda"></span></p>
+                <p><strong>Teléfonos:</strong> <span id="telefonos-tienda"></span></p>
+                <!-- <p><strong>Horario:</strong> <span id="horario-tienda"></span></p> -->
             </div>
         </div>
         <div class="mapa-container">

@@ -59,6 +59,7 @@ function mostrarTienda(nombreTienda) {
     if (tienda) {
         document.getElementById('nombre-tienda').textContent = tienda.nombre;
         document.getElementById('direccion-tienda').textContent = tienda.direccion;
+        document.getElementById('telefonos-tienda').textContent = tienda.telefonos;
         document.getElementById('horario-tienda').textContent = tienda.horario;
 
         if (marcadorActual) {
@@ -83,8 +84,9 @@ function mostrarTienda(nombreTienda) {
             content: `
                 <div style="padding: 10px">
                     <h3>${tienda.nombre}</h3>
-                    <p>${tienda.direccion}</p>
-                    <p>${tienda.horario}</p>
+                    <p><strong>Dirección:</strong> ${tienda.direccion}</p>
+                    <p><strong>Teléfonos:</strong> ${tienda.telefonos}</p>
+                    <p><strong>Horario:</strong> ${tienda.horario}</p>
                 </div>
             `
         });

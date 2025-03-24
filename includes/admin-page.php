@@ -21,6 +21,7 @@ function mostrar_pagina_admin() {
             sanitize_text_field($_POST['direccion']),
             sanitize_text_field($_POST['departamento']),
             sanitize_text_field($_POST['provincia']),
+            sanitize_text_field($_POST['telefonos']),
             floatval($_POST['latitud']),
             floatval($_POST['longitud'])
         );
@@ -55,7 +56,10 @@ function mostrar_pagina_admin() {
                     <th><label for="provincia">Provincia</label></th>
                     <td><input type="text" name="provincia" required></td>
                 </tr>
-               
+                <tr>
+                    <th><label for="telefonos">Teléfonos</label></th>
+                    <td><input type="text" name="telefonos" placeholder="Ej: 949776870 / 950121929" required></td>
+                </tr>
                 <tr>
                     <th><label for="latitud">Latitud</label></th>
                     <td><input type="text" name="latitud" required></td>
@@ -76,6 +80,7 @@ function mostrar_pagina_admin() {
                 <th>Dirección</th>
                 <th>Departamento</th>
                 <th>Provincia</th>
+                <th>Teléfonos</th>
                 <th>Latitud</th> 
                 <th>Longitud</th>
                 <th>Acciones</th>
@@ -88,8 +93,9 @@ function mostrar_pagina_admin() {
                     <td><?php echo esc_html($tienda['direccion']); ?></td>
                     <td><?php echo esc_html($tienda['departamento']); ?></td>
                     <td><?php echo esc_html($tienda['provincia']); ?></td>
-                    <td><?php echo esc_html($tienda['latitud']); ?></td> 
-                    <td><?php echo esc_html($tienda['longitud']); ?></td> 
+                    <td><?php echo esc_html($tienda['telefonos']); ?></td>
+                    <td><?php echo esc_html($tienda['latitud']); ?></td>
+                    <td><?php echo esc_html($tienda['longitud']); ?></td>
                     <td>
                         <a href="?page=tiendas-mapa&eliminar_tienda=<?php echo $tienda['id']; ?>" class="button button-secondary">Eliminar</a>
                     </td>

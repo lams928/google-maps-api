@@ -18,15 +18,20 @@ require_once TIENDAS_MAPA_PLUGIN_DIR . 'includes/admin-page.php';
 require_once TIENDAS_MAPA_PLUGIN_DIR . 'includes/shortcode.php';
 
 register_activation_hook(__FILE__, 'crear_tabla_tiendas');
+register_deactivation_hook(__FILE__, 'eliminar_tabla_tiendas');
+
+function eliminar_tabla_tiendas() {
+    global $wpdb;
+    $tabla_tiendas = $wpdb->prefix . 'tiendas_ubicaciones';
+    // $wpdb->query("DROP TABLE IF EXISTS $tabla_tiendas");
+}
+
 function crear_tabla_tiendas() {
     global $wpdb;
-    $tabla_tiendas = $wpdb->prefix . 'tiendas_mapa';
+    $tabla_tiendas = $wpdb->prefix . 'tiendas_ubicaciones';
     $charset_collate = $wpdb->get_charset_collate();
 
-    // Primero, eliminar la tabla si existe
-    $wpdb->query("DROP TABLE IF EXISTS $tabla_tiendas");
-
-    // Luego, crear la nueva tabla
+    // Crear la nueva tabla
     $sql = "CREATE TABLE $tabla_tiendas (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         nombre varchar(255) NOT NULL,

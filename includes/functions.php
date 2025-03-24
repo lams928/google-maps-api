@@ -5,7 +5,7 @@ function obtener_tiendas() {
     return $wpdb->get_results("SELECT * FROM $tabla_tiendas", ARRAY_A);
 }
 
-function agregar_tienda($nombre, $direccion, $departamento, $provincia, $horario, $latitud, $longitud) {
+function agregar_tienda($nombre, $direccion, $departamento, $provincia, $latitud, $longitud) {
     global $wpdb;
     $tabla_tiendas = $wpdb->prefix . 'tiendas_mapa';
     $wpdb->insert($tabla_tiendas, array(
@@ -13,7 +13,6 @@ function agregar_tienda($nombre, $direccion, $departamento, $provincia, $horario
         'direccion' => $direccion,
         'departamento' => $departamento,
         'provincia' => $provincia,
-        'horario' => $horario,
         'latitud' => $latitud,
         'longitud' => $longitud
     ));

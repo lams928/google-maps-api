@@ -21,7 +21,6 @@ function mostrar_pagina_admin() {
             sanitize_text_field($_POST['direccion']),
             sanitize_text_field($_POST['departamento']),
             sanitize_text_field($_POST['provincia']),
-            sanitize_text_field($_POST['horario']),
             floatval($_POST['latitud']),
             floatval($_POST['longitud'])
         );
@@ -56,10 +55,7 @@ function mostrar_pagina_admin() {
                     <th><label for="provincia">Provincia</label></th>
                     <td><input type="text" name="provincia" required></td>
                 </tr>
-                <tr>
-                    <th><label for="horario">Horario</label></th>
-                    <td><input type="text" name="horario" required></td>
-                </tr>
+               
                 <tr>
                     <th><label for="latitud">Latitud</label></th>
                     <td><input type="text" name="latitud" required></td>
@@ -74,28 +70,32 @@ function mostrar_pagina_admin() {
 
         <h2>Lista de Tiendas</h2>
         <table class="wp-list-table widefat fixed striped">
-            <thead>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Departamento</th>
+                <th>Provincia</th>
+                <th>Latitud</th> 
+                <th>Longitud</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($tiendas as $tienda): ?>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Dirección</th>
-                    <th>Departamento</th>
-                    <th>Provincia</th>
-                    <th>Acciones</th>
+                    <td><?php echo esc_html($tienda['nombre']); ?></td>
+                    <td><?php echo esc_html($tienda['direccion']); ?></td>
+                    <td><?php echo esc_html($tienda['departamento']); ?></td>
+                    <td><?php echo esc_html($tienda['provincia']); ?></td>
+                    <td><?php echo esc_html($tienda['latitud']); ?></td> 
+                    <td><?php echo esc_html($tienda['longitud']); ?></td> 
+                    <td>
+                        <a href="?page=tiendas-mapa&eliminar_tienda=<?php echo $tienda['id']; ?>" class="button button-secondary">Eliminar</a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($tiendas as $tienda): ?>
-                    <tr>
-                        <td><?php echo esc_html($tienda['nombre']); ?></td>
-                        <td><?php echo esc_html($tienda['direccion']); ?></td>
-                        <td><?php echo esc_html($tienda['departamento']); ?></td>
-                        <td><?php echo esc_html($tienda['provincia']); ?></td>
-                        <td>
-                            <a href="?page=tiendas-mapa&eliminar_tienda=<?php echo $tienda['id']; ?>" class="button button-secondary">Eliminar</a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
+            <?php endforeach; ?>
+        </tbody>
         </table>
     </div>
     <?php

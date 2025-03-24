@@ -45,7 +45,7 @@ function mostrar_mapa_tiendas() {
             </div>
         </div>
         <div class="mapa-container">
-            <div id="mapa-tiendas"></div>
+            <div id="mapa"></div>
         </div>
     </div>
     <?php

@@ -2,10 +2,12 @@ let mapa;
 let marcadorActual;
 
 function initMap() {
-    mapa = new google.maps.Map(document.getElementById("mapa-tiendas"), {
+    mapa = new google.maps.Map(document.getElementById("mapa"), { // Cambiado de mapa-tiendas a mapa
         center: { lat: -12.0464, lng: -77.0428 },
         zoom: 6,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        styles: [], // Opcional: para estilos personalizados
+        gestureHandling: 'cooperative'
     });
 }
 
@@ -104,4 +106,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
 window.initMap = initMap;
+google.maps.event.addDomListener(window, 'load', function() {
+    console.log('Google Maps API cargado');
+    initMap();
+});
